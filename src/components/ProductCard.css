@@ -1,0 +1,395 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #fffdf5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Container */
+.card-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-image {
+  transform: scale(1.08);
+}
+
+/* Product Tag */
+.product-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content */
+.card-content {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #d4a848;
+  text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #302418;
+  margin: 0;
+  line-height: 1.3;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Rating */
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.stars {
+  color: #d4a848;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.rating-text {
+  color: #999;
+  font-size: 0.75rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Price */
+.card-price {
+  margin: 0.5rem 0;
+}
+
+.price-display {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #d4a848;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Card Actions */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+
+/* Quantity Selector - Compact */
+.quantity-selector-compact {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 2px solid #d4a848;
+  border-radius: 4px;
+  overflow: hidden;
+  width: fit-content;
+  height: 32px;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #d4a848;
+  color: #fffdf5;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.qty-btn:hover {
+  background: #c99630;
+}
+
+.qty-btn.minus {
+  border-right: 1px solid rgba(255, 253, 245, 0.3);
+}
+
+.qty-btn.plus {
+  border-left: 1px solid rgba(255, 253, 245, 0.3);
+}
+
+/* ✅ FIXED: CENTERED QUANTITY DISPLAY */
+.qty-display {
+  width: 40px;
+  height: 32px;
+  border: none;
+  border-left: 1px solid #d4a848;
+  border-right: 1px solid #d4a848;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #302418;
+  font-family: 'Nunito', sans-serif;
+  padding: 0;
+  margin: 0;
+  
+  /* ✅ FIX: CENTER THE NUMBER */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 32px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.qty-display:focus {
+  outline: none;
+}
+
+/* Remove spinner arrows */
+.qty-display::-webkit-outer-spin-button,
+.qty-display::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-display[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.btn-add-to-cart,
+.btn-purchase,
+.btn-wishlist {
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* Add to Cart Button */
+.btn-add-to-cart {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  color: #d4a848;
+  border: 2px solid #d4a848;
+  text-transform: uppercase;
+}
+
+.btn-add-to-cart:hover {
+  background: #d4a848;
+  color: #fffdf5;
+  transform: translateY(-1px);
+}
+
+/* Purchase Button */
+.btn-purchase {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  background: #302418;
+  color: #fffdf5;
+  text-transform: uppercase;
+  min-width: 80px;
+}
+
+.btn-purchase:hover {
+  background: #1a1612;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(48, 36, 24, 0.3);
+}
+
+/* Wishlist Button */
+.btn-wishlist {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: #f5f1e8;
+  color: #b87848;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d4a84820;
+}
+
+.btn-wishlist:hover {
+  border-color: #d4a848;
+  background: rgba(212, 168, 72, 0.1);
+  color: #d4a848;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-content {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .price-display {
+    font-size: 1rem;
+  }
+
+  .card-actions {
+    gap: 0.6rem;
+  }
+
+  .quantity-selector-compact {
+    width: 100%;
+    height: 28px;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .qty-display {
+    width: 35px;
+    height: 28px;
+    font-size: 0.85rem;
+    line-height: 28px;
+  }
+
+  .button-group {
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  .btn-add-to-cart,
+  .btn-purchase {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .btn-wishlist {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-content {
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-rating {
+    font-size: 0.7rem;
+  }
+
+  .price-display {
+    font-size: 0.95rem;
+  }
+
+  .card-actions {
+    gap: 0.5rem;
+  }
+
+  .quantity-selector-compact {
+    width: 100%;
+    height: 26px;
+  }
+
+  .qty-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
+  }
+
+  .qty-display {
+    width: 30px;
+    height: 26px;
+    font-size: 0.8rem;
+    line-height: 26px;
+  }
+
+  .button-group {
+    width: 100%;
+    gap: 0.3rem;
+  }
+
+  .btn-add-to-cart,
+  .btn-purchase {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .btn-wishlist {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+}

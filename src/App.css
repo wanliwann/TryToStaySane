@@ -1,0 +1,44 @@
+:root {
+  /* Honey Silk Palette */
+  --bg: #FFFDF5;
+  --gold: #D4A848;
+  --terra: #B87848;
+  --surface: #F5ECDA;
+  --text: #302418;
+  --border: #E8D8B8;
+  --alt-bg: #F8F0DC;
+  --faint: rgba(48, 36, 24, 0.45);
+  --light-gold: #F0E4C8;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Nunito', sans-serif;
+
+  /* Spacing */
+  --section-padding: 72px 64px;
+  --section-padding-mobile: 40px 24px;
+}
+
+/* Utility classes */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.gold-line {
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 24px;
+  opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 40px 24px;
+  }
+}

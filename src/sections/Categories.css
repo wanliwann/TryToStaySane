@@ -1,0 +1,85 @@
+.categories {
+  background: var(--bg);
+}
+
+.categories__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--section-padding);
+}
+
+.categories__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.category-card {
+  height: 260px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.category-card:hover {
+  transform: scale(1.02);
+}
+
+.category-card--him {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.category-card--her {
+  background: var(--terra);
+  color: var(--bg);
+}
+
+.category-card h3 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.category-card__sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.category-card__link {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.category-card--him .category-card__link {
+  color: var(--terra);
+}
+
+.category-card--her .category-card__link {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .categories__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .category-card {
+    height: auto;
+    padding: 24px;
+  }
+
+  .category-card h3 {
+    font-size: 22px;
+  }
+}

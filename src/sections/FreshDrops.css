@@ -1,0 +1,190 @@
+/* Fresh Drops Section */
+.fresh-drops {
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.fresh-drops__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #d4a848;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.fresh-drops__title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #302418;
+  margin: 0.5rem 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.fresh-drops__desc {
+  font-size: 1rem;
+  color: #999;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Grid Layout */
+.fresh-drops__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Fresh Card */
+.fresh-card {
+  display: flex;
+  flex-direction: column;
+  background: #fffdf5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fresh-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.fresh-card__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fresh-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.fresh-card:hover .fresh-card__image img {
+  transform: scale(1.08);
+}
+
+.fresh-card__tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: #d4a848;
+  color: #fffdf5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fresh-card__info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fresh-card__brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #d4a848;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.fresh-card__name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #302418;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.fresh-card__price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4a848;
+  margin: 0.5rem 0 0 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Footer with Button */
+.fresh-drops__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.view-all-btn {
+  padding: 0.8rem 2rem;
+  border: 2px solid #d4a848;
+  background: transparent;
+  color: #d4a848;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Nunito', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.view-all-btn:hover {
+  background: #d4a848;
+  color: #fffdf5;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fresh-drops {
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .fresh-drops__title {
+    font-size: 1.8rem;
+  }
+
+  .fresh-drops__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fresh-drops__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fresh-drops__title {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,27 @@
+.new-products {
+  background: var(--alt-bg);
+}
+
+.new-products__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--section-padding);
+}
+
+.new-products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.new-products__cta {
+  text-align: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 768px) {
+  .new-products__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

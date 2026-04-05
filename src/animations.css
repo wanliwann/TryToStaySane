@@ -1,0 +1,289 @@
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   Add class "reveal" + "visible" to trigger
+   ============================================ */
+
+/* Fade up (default) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade up with delay variants */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Fade from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale up */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+
+/* Image zoom on hover */
+.hover-zoom {
+  overflow: hidden;
+}
+
+.hover-zoom img,
+.hover-zoom .product-card__image,
+.hover-zoom .img-placeholder {
+  transition: transform 0.5s ease;
+}
+
+.hover-zoom:hover img,
+.hover-zoom:hover .product-card__image,
+.hover-zoom:hover .img-placeholder {
+  transform: scale(1.08);
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-shine:hover::after {
+  left: 100%;
+}
+
+/* Gold shimmer underline on hover */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Card lift on hover */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(48, 36, 24, 0.08);
+}
+
+/* ============================================
+   PAGE LOAD ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Hero specific load animation */
+.hero-animate .eyebrow {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.hero-animate .hero__title {
+  animation: fadeInUp 0.7s ease forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.hero-animate .hero__desc {
+  animation: fadeInUp 0.7s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.hero-animate .hero__buttons {
+  animation: fadeInUp 0.7s ease forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.hero-animate .hero__image {
+  animation: fadeInRight 0.9s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.hero-animate .hero__dots {
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* Navbar load animation */
+.navbar {
+  animation: slideDown 0.5s ease forwards;
+}
+
+/* ============================================
+   SPARKLE / BLINK BLINK EFFECTS
+   ============================================ */
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.sparkle-container {
+  position: relative;
+}
+
+.sparkle-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Smooth section transitions */
+.section-transition {
+  transition: background-color 0.5s ease;
+}
+
+/* Parallax-style subtle movement */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gold gradient text for special headings */
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--terra) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}

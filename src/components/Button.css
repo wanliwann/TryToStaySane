@@ -1,0 +1,51 @@
+.btn {
+  display: inline-block;
+  padding: 13px 32px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--terra);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: #9A6038;
+}
+
+.btn-outline {
+  border: 1.5px solid var(--terra);
+  color: var(--terra);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--terra);
+  color: var(--bg);
+}
+
+.btn-gold {
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+.btn-gold:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 12px 24px;
+    font-size: 9px;
+  }
+}
