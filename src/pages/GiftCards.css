@@ -1,0 +1,273 @@
+.gift-cards-page {
+  background: var(--bg);
+  min-height: 80vh;
+  padding: 60px 20px;
+}
+
+.gift-cards-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gift-cards-container h1 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  color: var(--text);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--faint);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* Gift Card Styles */
+.gift-card-section {
+  margin: 40px 0;
+}
+
+.gift-card {
+  background: linear-gradient(135deg, #D4A848 0%, #B87848 100%);
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(212, 168, 72, 0.3);
+  margin-bottom: 30px;
+}
+
+.gift-card__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.gift-card__header h2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  margin: 0;
+}
+
+.gift-card__badge {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  opacity: 0.95;
+}
+
+.gift-card__content {
+  text-align: center;
+}
+
+.gift-card__desc {
+  font-size: 16px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.gift-card__code-label {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.gift-card__code-box {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gift-card__code-box code {
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.btn-copy {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-copy:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.gift-card__details {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.gift-card__details p {
+  margin: 8px 0;
+}
+
+/* Not Eligible */
+.no-eligible {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE8CC 100%);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.no-eligible h2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: #302418;
+  margin-bottom: 16px;
+}
+
+.no-eligible p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.current-spent {
+  font-size: 18px;
+  color: #D4A848;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.btn-primary {
+  background: #302418;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+.btn-primary:hover {
+  background: #D4A848;
+  color: #302418;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #D4A848;
+  padding: 12px 32px;
+  border: 2px solid #D4A848;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #D4A848;
+  color: white;
+}
+
+/* Membership Info */
+.membership-info {
+  background: #FFFDF5;
+  border: 2px solid #D4A848;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 60px;
+  scroll-margin-top: 100px;
+}
+
+.membership-info h3 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: #302418;
+  margin-bottom: 12px;
+}
+
+.membership-info p {
+  color: #666;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.membership-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.membership-benefits-list li {
+  padding: 10px 0;
+  color: #302418;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #E8D4B8;
+}
+
+.membership-benefits-list li:last-child {
+  border-bottom: none;
+}
+
+.membership-how {
+  color: #B87848;
+  font-style: italic;
+  margin: 20px 0 24px 0 !important;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .gift-card {
+    padding: 24px;
+  }
+
+  .gift-card__header h2 {
+    font-size: 24px;
+  }
+
+  .gift-card__code-box {
+    flex-direction: column;
+  }
+
+  .gift-cards-container h1 {
+    font-size: 32px;
+  }
+
+  .no-eligible,
+  .membership-info {
+    padding: 24px;
+  }
+
+  .membership-info h3 {
+    font-size: 20px;
+  }
+
+  .membership-benefits-list {
+    display: block;
+  }
+}

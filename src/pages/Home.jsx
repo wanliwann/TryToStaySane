@@ -1,8 +1,7 @@
 import Hero from '../sections/Hero'
 import AboutPreview from '../sections/AboutPreview'
-import BestSellers from '../sections/BestSellers'
+import FeaturedPerfumes from '../sections/FeaturedPerfumes'
 import Categories from '../sections/Categories'
-import NewProducts from '../sections/NewProducts'
 import Testimonials from '../sections/Testimonials'
 import PromoSection from '../sections/PromoSection'
 import Newsletter from '../components/Newsletter'
@@ -18,15 +17,11 @@ function Home() {
       </ScrollReveal>
 
       <ScrollReveal direction="up">
-        <BestSellers />
+        <FeaturedPerfumes />
       </ScrollReveal>
 
       <ScrollReveal direction="up">
         <Categories />
-      </ScrollReveal>
-
-      <ScrollReveal direction="up">
-        <NewProducts />
       </ScrollReveal>
 
       <ScrollReveal direction="up">

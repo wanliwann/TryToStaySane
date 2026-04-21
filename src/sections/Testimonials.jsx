@@ -8,8 +8,8 @@ function Testimonials() {
     <section className="testimonials">
       <div className="testimonials__container">
         <SectionHeader
-          eyebrow="Kind Words"
-          title="Loved By Many"
+          eyebrow="TryToStaySane"
+          title="Customers Feedback"
           showLine={true}
         />
         <div className="testimonials__grid">

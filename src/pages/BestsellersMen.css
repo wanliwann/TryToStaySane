@@ -1,0 +1,102 @@
+/* BESTSELLERS MEN PAGE */
+.bestsellers-men-page {
+  background: #FFFDF5;
+  min-height: 100vh;
+}
+
+/* HERO SECTION */
+.bestsellers-hero {
+  background: linear-gradient(135deg, #D4A848 0%, #B87848 100%);
+  color: white;
+  text-align: center;
+  padding: 40px 40px;
+  margin-bottom: 80px;
+}
+
+.bestsellers-title {
+  font-size: 56px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+.bestsellers-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* CONTAINER */
+.bestsellers-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px 100px 20px;
+}
+
+/* PRODUCTS GRID - 3 columns */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .bestsellers-hero {
+    padding: 60px 30px;
+    margin-bottom: 60px;
+  }
+
+  .bestsellers-title {
+    font-size: 40px;
+  }
+
+  .bestsellers-subtitle {
+    font-size: 16px;
+  }
+
+  .products-grid {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bestsellers-hero {
+    padding: 50px 20px;
+    margin-bottom: 50px;
+  }
+
+  .bestsellers-title {
+    font-size: 32px;
+  }
+
+  .bestsellers-subtitle {
+    font-size: 15px;
+  }
+
+  .bestsellers-container {
+    padding: 0 15px 60px 15px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bestsellers-hero {
+    padding: 40px 15px;
+    margin-bottom: 40px;
+  }
+
+  .bestsellers-title {
+    font-size: 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

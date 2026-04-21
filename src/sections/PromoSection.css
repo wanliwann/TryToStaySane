@@ -12,8 +12,8 @@
 }
 
 .promo-section__image {
-  width: 46%;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   background: var(--surface);
   border-radius: 12px;
   flex-shrink: 0;
@@ -24,6 +24,13 @@
   color: var(--border);
   font-style: italic;
   overflow: hidden;
+}
+
+.promo-section__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .promo-section__text h3 {
@@ -50,8 +57,57 @@
 
 .promo-section__buttons {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
+}
+
+.promo-section__buttons a {
+  flex: 1 1 0;
+  min-width: 160px;
+  display: flex;
+}
+
+.promo-section__buttons button {
+  width: 100%;
+  padding: 14px 32px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.promo-section__buttons button.btn-primary {
+  background: #B87848;
+  color: #FFFDF5;
+}
+
+.promo-section__buttons button.btn-primary:hover {
+  background: #A06638;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 120, 72, 0.25);
+}
+
+.promo-section__buttons button.btn-gold {
+  background: transparent;
+  color: #D4A848;
+  border: 2px solid #D4A848;
+  padding: 12px 31px;
+}
+
+.promo-section__buttons button.btn-gold:hover {
+  background: #D4A848;
+  color: #302418;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 168, 72, 0.25);
 }
 
 @media (max-width: 768px) {
@@ -62,7 +118,8 @@
 
   .promo-section__image {
     width: 100%;
-    height: 200px;
+    height: 100%;
+    aspect-ratio: 1;
   }
 
   .promo-section__text h3 {
@@ -72,5 +129,20 @@
   .promo-section__features p {
     font-size: 13px;
     line-height: 2.2;
+  }
+
+  .promo-section__buttons {
+    gap: 12px;
+  }
+
+  .promo-section__buttons a {
+    min-width: 140px;
+    max-width: 160px;
+  }
+
+  .promo-section__buttons button {
+    padding: 12px 24px;
+    font-size: 12px;
+    height: 44px;
   }
 }

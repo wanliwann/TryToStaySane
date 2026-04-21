@@ -1,79 +1,91 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Button from '../components/Button'
 import './Hero.css'
 
 const slides = [
   {
-    eyebrow: 'Sun-Kissed Luxury',
-    title: 'Dripping In',
-    titleAccent: 'Honey & Light',
-    desc: 'Warm, golden fragrances that make every day feel like a perfect summer afternoon. Crafted for the bold and the beautiful.',
-    image: null,
+    id: 'w26',
+    eyebrow: 'Yves Saint Laurent',
+    title: 'Mon',
+    titleAccent: 'Paris',
+    desc: 'A sweet fruity floral perfume for women. Sweet notes of luscious red berries softened by datura flower and anchored by the woody scent of white musk.',
+    price: 132,
+    oz: '1.6',
+    image: '/women/11-mon-paris/1.6oz-132.jpg',
+    section: 'women',
   },
   {
-    eyebrow: 'New This Season',
-    title: 'Glow From',
-    titleAccent: 'The Inside Out',
-    desc: 'Discover scents that radiate warmth and confidence. Each bottle is a golden invitation to shine.',
-    image: null,
+    id: 'm1',
+    eyebrow: 'Dior',
+    title: 'Dior Sauvage',
+    titleAccent: 'Eau de Parfum',
+    desc: 'A powerful, fresh fragrance with dominant notes of bergamot, pepper, and lavender. The iconic scent for the modern man.',
+    price: 232,
+    oz: '6.8',
+    image: '/men/01-dior-sauvage/DiorS 6.8oz -4.png',
+    section: 'men',
   },
   {
-    eyebrow: 'Limited Edition',
-    title: 'Chasing',
-    titleAccent: 'Golden Hour',
-    desc: 'Our most exclusive blend yet — inspired by sunsets, slow evenings, and the magic of golden light.',
-    image: null,
+    id: 'm8',
+    eyebrow: 'Carolina Herrera',
+    title: 'Bad Boy',
+    titleAccent: 'Cobalt',
+    desc: 'A bold, fresh cologne with bright pink pepper and lavender. Electric, confident, and irresistibly sexy.',
+    price: 160,
+    oz: '3.4',
+    image: '/men/08-bad-boy-cobalt/bad 3.4oz -3.png',
+    section: 'men',
   },
 ]
 
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
   const slide = slides[activeSlide]
 
-  // Auto-play slider
+  // Auto-play slider - 4 seconds per slide, infinite loop
   useEffect(() => {
     const timer = setInterval(() => {
-      handleSlideChange((activeSlide + 1) % slides.length)
-    }, 5000)
+      setActiveSlide(prevSlide => (prevSlide + 1) % slides.length)
+    }, 4000)
+    
     return () => clearInterval(timer)
-  }, [activeSlide])
+  }, [])
 
   const handleSlideChange = (index) => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    setTimeout(() => {
-      setActiveSlide(index)
-      setTimeout(() => setIsAnimating(false), 600)
-    }, 300)
+    if (index === activeSlide) return
+    setActiveSlide(index)
   }
+
+  // Determine explore link based on section
+  const exploreLink = slide.section === 'women' ? '/browse/women' : '/browse/men'
 
   return (
     <section className="hero hero-animate">
       <div className="hero__container">
-        <div className={`hero__text ${isAnimating ? 'slide-out' : 'slide-in'}`}>
-          <p className="eyebrow">{slide.eyebrow}</p>
-          <h1 className="hero__title">
+        <div className="hero__text">
+          <p className="eyebrow" key={`eyebrow-${slide.id}`}>{slide.eyebrow}</p>
+          <h1 className="hero__title" key={`title-${slide.id}`}>
             {slide.title}<br />
             <em>{slide.titleAccent}</em>
           </h1>
-          <p className="hero__desc">{slide.desc}</p>
-          <div className="hero__buttons">
-            <Link to="/browse">
-              <Button variant="primary">Explore Scents</Button>
+          <p className="hero__desc" key={`desc-${slide.id}`}>{slide.desc}</p>
+          <div className="hero__price-size" key={`price-${slide.id}`}>
+            <span className="hero__price-label">Size: {slide.oz}</span>
+            <span className="hero__price-amount">${slide.price}</span>
+          </div>
+          <div className="hero__buttons" key={`buttons-${slide.id}`}>
+            <Link to={exploreLink} className="btn btn-primary">
+              Explore More
             </Link>
-            <Link to="/browse">
-              <Button variant="gold">Seasonal Picks</Button>
+            <Link to={`/product/${slide.id}`} className="btn btn-gold">
+              Shop Now
             </Link>
           </div>
         </div>
-        <div className={`hero__image float-animation ${isAnimating ? 'slide-out-right' : 'slide-in-right'}`}>
-          {slide.image ? (
-            <img src={slide.image} alt="Featured perfume" />
-          ) : (
-            <span>featured perfume bottle</span>
-          )}
+        <div className="hero__image float-animation" key={`img-${slide.id}`}>
+          <img src={slide.image} alt={slide.titleAccent} onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/400x500?text=Perfume'
+          }} />
         </div>
       </div>
       <div className="hero__dots">

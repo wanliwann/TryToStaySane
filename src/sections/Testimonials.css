@@ -15,25 +15,22 @@
 }
 
 .testimonial-card {
-  background: var(--alt-bg);
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE8CC 50%, #FFDDB5 100%);
   border-radius: 10px;
   padding: 32px;
   text-align: center;
+  box-shadow: 0 2px 8px rgba(212, 168, 72, 0.1);
 }
 
 .testimonial-card__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--surface);
-  margin: 0 auto 16px;
+  display: none;
 }
 
 .testimonial-card__quote {
   font-family: var(--font-heading);
   font-size: 15px;
   font-style: italic;
-  color: var(--faint);
+  color: #666666;
   line-height: 1.65;
   margin-bottom: 14px;
 }
@@ -41,12 +38,12 @@
 .testimonial-card__name {
   font-size: 13px;
   font-weight: 700;
-  color: var(--text);
+  color: #000000;
 }
 
 .testimonial-card__role {
   font-size: 11px;
-  color: var(--border);
+  color: #999999;
   margin-top: 2px;
 }
 

@@ -1,41 +1,44 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './ProductCard.css';
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
+import { Link } from "react-router-dom";
+import "./ProductCard.css";
 
-function ProductCard({ product }) {
-  const [quantity, setQuantity] = useState(1);
-  const minPrice = Math.min(...product.sizes.map((size) => size.price));
-  const maxPrice = Math.max(...product.sizes.map((size) => size.price));
+export default function ProductCard({ product, showHoverActions = true }) {
+  const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-    console.log(`Added ${quantity}x ${product.name} to cart`);
-    setQuantity(1);
-  };
-
-  const handlePurchase = (e) => {
-    e.preventDefault();
-    console.log(`Purchased ${quantity}x ${product.name} immediately`);
-    setQuantity(1);
-  };
-
-  const handleQuantityChange = (value) => {
-    if (value >= 1) {
-      setQuantity(value);
+  const handleAddToCart = () => {
+    if (product.sizes && product.sizes.length > 0) {
+      addToCart(product, product.sizes[0].oz, 1);
     }
   };
 
+  const mainImage = product.mainImage || product.image || "https://via.placeholder.com/250x350?text=Perfume";
+  const caption = product.caption || "Exceptional fragrance for discerning taste.";
+  const inWishlist = isInWishlist(product.id);
+
   return (
-    <Link to={`/product/${product.id}`} className="product-card">
-      <div className="card-image-container">
-        <img
-          src={product.mainImage}
-          alt={product.name}
-          className="card-image"
-        />
+    <div className="product-card">
+      {/* Image Container with Lazy Loading */}
+      <div className="product-card__image-container">
+        {/* Clickable Image */}
+        <Link to={`/product/${product.id}`} style={{ display: 'block', width: '100%' }}>
+          <img
+            src={mainImage}
+            alt={product.name}
+            className="product-card__image"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/250x350?text=Perfume";
+            }}
+          />
+        </Link>
+        
+        {/* Tag Badge */}
         {product.tag && (
           <div
-            className="product-tag"
+            className="product-card__tag"
             style={{
               backgroundColor: product.tagColor,
               color: product.tagTextColor,
@@ -44,95 +47,64 @@ function ProductCard({ product }) {
             {product.tag}
           </div>
         )}
-      </div>
 
-      <div className="card-content">
-        <div className="card-header">
-          <span className="card-brand">{product.brand}</span>
-        </div>
-
-        <h3 className="card-title">{product.name}</h3>
-
-        <div className="card-rating">
-          <span className="stars">
-            {'★'.repeat(Math.floor(product.rating))}
-            {product.rating % 1 >= 0.5 && '★'}
-          </span>
-          <span className="rating-text">
-            {product.rating} ({product.reviewCount} reviews)
-          </span>
-        </div>
-
-        <div className="card-price">
-          {minPrice === maxPrice ? (
-            <span className="price-display">From ${minPrice}</span>
-          ) : (
-            <span className="price-display">
-              ${minPrice} - ${maxPrice}
-            </span>
-          )}
-        </div>
-
-        {/* Quantity Selector & Action Buttons */}
-        <div className="card-actions" onClick={(e) => e.preventDefault()}>
-          {/* Quantity Selector */}
-          <div className="quantity-selector-compact">
+        {/* Hover Actions */}
+        {showHoverActions && (
+          <div className="product-card__hover-actions">
             <button
-              className="qty-btn minus"
-              onClick={() => handleQuantityChange(quantity - 1)}
-              aria-label="Decrease quantity"
-            >
-              −
-            </button>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) =>
-                handleQuantityChange(Math.max(1, parseInt(e.target.value) || 1))
-              }
-              className="qty-display"
-            />
-            <button
-              className="qty-btn plus"
-              onClick={() => handleQuantityChange(quantity + 1)}
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="button-group">
-            <button
-              className="btn-add-to-cart"
               onClick={handleAddToCart}
-              title="Add to Cart"
+              className="product-card__action-btn product-card__action-btn--cart"
+              title="Add to cart"
             >
-              Add to Cart
+               ADD TO CART
             </button>
             <button
-              className="btn-purchase"
-              onClick={handlePurchase}
-              title="Purchase Now"
+              onClick={() => toggleWishlist(product)}
+              className={`product-card__action-btn product-card__action-btn--wishlist ${
+                inWishlist ? "active" : ""
+              }`}
+              title={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
             >
-              Purchase
+              ♡ {inWishlist ? "LIKED" : "WISHLIST"}
             </button>
-            <button
-              className="btn-wishlist"
-              title="Add to Wishlist"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log(`Added ${product.name} to wishlist`);
-              }}
-            >
-              ♡
-            </button>
+            <Link to={`/product/${product.id}`} style={{ display: 'block', width: '100%' }}>
+              <button className="product-card__action-btn product-card__action-btn--view" style={{ width: '100%' }}>
+                 VIEW DETAILS
+              </button>
+            </Link>
           </div>
-        </div>
+        )}
       </div>
-    </Link>
+
+      {/* Product Info */}
+      <div className="product-card__info">
+        <p className="product-card__brand">{product.brand}</p>
+        
+        {/* Clickable Name */}
+        <Link to={`/product/${product.id}`} style={{ display: 'block', textDecoration: 'none' }}>
+          <h3 className="product-card__name">{product.name}</h3>
+        </Link>
+
+        {/* Product Caption */}
+        <p className="product-card__caption">{caption}</p>
+
+        {/* Rating */}
+        <div className="product-card__rating">
+          <span className="product-card__stars">★★★★★</span>
+          <span className="product-card__rating-number">{product.rating}</span>
+          <span className="product-card__review-count">({product.reviewCount})</span>
+        </div>
+
+        {/* Price */}
+        <p className="product-card__price">
+          From ${Math.min(...product.sizes.map((s) => s.price))}
+        </p>
+
+        {/* Sizes available */}
+        <p className="product-card__availability">
+          {product.sizes.length} sizes available
+        </p>
+      </div>
+    </div>
   );
 }
-
-export default ProductCard;

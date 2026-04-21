@@ -1,395 +1,325 @@
-.product-card {
-  display: flex;
-  flex-direction: column;
-  background: #fffdf5;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
-  height: 100%;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-/* Image Container */
-.card-image-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .card-image {
-  transform: scale(1.08);
-}
-
-/* Product Tag */
-.product-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Content */
-.card-content {
-  padding: 1.2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card-brand {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #d4a848;
-  text-transform: uppercase;
-  font-family: 'Nunito', sans-serif;
-}
-
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #302418;
-  margin: 0;
-  line-height: 1.3;
-  font-family: 'Cormorant Garamond', serif;
-}
-
-/* Rating */
-.card-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.stars {
-  color: #d4a848;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-}
-
-.rating-text {
-  color: #999;
-  font-size: 0.75rem;
-  font-family: 'Nunito', sans-serif;
-}
-
-/* Price */
-.card-price {
-  margin: 0.5rem 0;
-}
-
-.price-display {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #d4a848;
-  font-family: 'Cormorant Garamond', serif;
-}
-
-/* Card Actions */
-.card-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-top: auto;
-}
-
-/* Quantity Selector - Compact */
-.quantity-selector-compact {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  border: 2px solid #d4a848;
-  border-radius: 4px;
-  overflow: hidden;
-  width: fit-content;
-  height: 32px;
-}
-
-.qty-btn {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: #d4a848;
-  color: #fffdf5;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: 'Nunito', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-.qty-btn:hover {
-  background: #c99630;
-}
-
-.qty-btn.minus {
-  border-right: 1px solid rgba(255, 253, 245, 0.3);
-}
-
-.qty-btn.plus {
-  border-left: 1px solid rgba(255, 253, 245, 0.3);
-}
-
-/* ✅ FIXED: CENTERED QUANTITY DISPLAY */
-.qty-display {
-  width: 40px;
-  height: 32px;
-  border: none;
-  border-left: 1px solid #d4a848;
-  border-right: 1px solid #d4a848;
-  background: transparent;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #302418;
-  font-family: 'Nunito', sans-serif;
-  padding: 0;
-  margin: 0;
+/* ========================
+   PRODUCT CARD CONTAINER
+   ======================== */
+   .product-card {
+    position: relative;
+    background-color: #FFFDF5;
+    border: 1px solid #E8E3D8;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
   
-  /* ✅ FIX: CENTER THE NUMBER */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 32px;
-  vertical-align: middle;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.qty-display:focus {
-  outline: none;
-}
-
-/* Remove spinner arrows */
-.qty-display::-webkit-outer-spin-button,
-.qty-display::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.qty-display[type=number] {
-  -moz-appearance: textfield;
-}
-
-/* Button Group */
-.button-group {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-}
-
-.btn-add-to-cart,
-.btn-purchase,
-.btn-wishlist {
-  border: none;
-  border-radius: 4px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-}
-
-/* Add to Cart Button */
-.btn-add-to-cart {
-  flex: 1;
-  padding: 0.6rem 0.8rem;
-  background: transparent;
-  color: #d4a848;
-  border: 2px solid #d4a848;
-  text-transform: uppercase;
-}
-
-.btn-add-to-cart:hover {
-  background: #d4a848;
-  color: #fffdf5;
-  transform: translateY(-1px);
-}
-
-/* Purchase Button */
-.btn-purchase {
-  flex: 1;
-  padding: 0.6rem 0.8rem;
-  background: #302418;
-  color: #fffdf5;
-  text-transform: uppercase;
-  min-width: 80px;
-}
-
-.btn-purchase:hover {
-  background: #1a1612;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(48, 36, 24, 0.3);
-}
-
-/* Wishlist Button */
-.btn-wishlist {
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  background: #f5f1e8;
-  color: #b87848;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #d4a84820;
-}
-
-.btn-wishlist:hover {
-  border-color: #d4a848;
-  background: rgba(212, 168, 72, 0.1);
-  color: #d4a848;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .card-content {
-    padding: 1rem;
-    gap: 0.6rem;
+  .product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: #D4A848;
   }
-
-  .card-title {
-    font-size: 1rem;
-  }
-
-  .price-display {
-    font-size: 1rem;
-  }
-
-  .card-actions {
-    gap: 0.6rem;
-  }
-
-  .quantity-selector-compact {
+  
+  /* ========================
+     IMAGE CONTAINER
+     ======================== */
+  .product-card__image-container {
+    position: relative;
     width: 100%;
-    height: 28px;
+    height: 300px;
+    overflow: hidden;
+    background-color: #F5F5F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .qty-btn {
-    width: 28px;
-    height: 28px;
-    font-size: 0.9rem;
+  
+  .product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease;
+    padding: 16px;
+    background-color: #FFFBF7;
   }
-
-  .qty-display {
-    width: 35px;
-    height: 28px;
+  
+  .product-card:hover .product-card__image {
+    transform: scale(1.08);
+  }
+  
+  /* ========================
+     TAG BADGE
+     ======================== */
+  .product-card__tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    animation: slideInBadge 0.3s ease-out;
+  }
+  
+  @keyframes slideInBadge {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* ========================
+     HOVER ACTION BUTTONS
+     ======================== */
+  .product-card__hover-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), transparent);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .product-card:hover .product-card__hover-actions {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .product-card__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 12px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #302418;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  
+  .product-card__action-btn:hover {
+    background-color: #D4A848;
+    color: #FFFDF5;
+    transform: scale(1.05);
+  }
+  
+  .product-card__action-btn--cart {
+    background-color: #D4A848;
+    color: #302418;
+    font-weight: 700;
+  }
+  
+  .product-card__action-btn--cart:hover {
+    background-color: #B87848;
+    color: #FFFDF5;
+  }
+  
+  .product-card__action-btn--wishlist {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .product-card__action-btn--wishlist:hover {
+    background-color: #FF6B9D;
+    color: white;
+  }
+  
+  .product-card__action-btn--wishlist.active {
+    background-color: #B87848;
+    color: white;
+  }
+  
+  .product-card__action-btn--view {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+  
+  .product-card__action-btn--view:hover {
+    background-color: #D4A848;
+    color: #302418;
+  }
+  
+  /* ========================
+     PRODUCT INFO
+     ======================== */
+  .product-card__info {
+    padding: 16px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card__brand {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
-    line-height: 28px;
+    color: #D4A848;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 4px 0;
+    font-weight: 500;
   }
-
-  .button-group {
-    width: 100%;
-    gap: 0.4rem;
+  
+  .product-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: #302418;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    font-weight: 600;
   }
-
-  .btn-add-to-cart,
-  .btn-purchase {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.7rem;
-  }
-
-  .btn-wishlist {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .card-content {
-    padding: 0.8rem;
-    gap: 0.5rem;
-  }
-
-  .card-title {
-    font-size: 0.95rem;
-  }
-
-  .card-rating {
-    font-size: 0.7rem;
-  }
-
-  .price-display {
-    font-size: 0.95rem;
-  }
-
-  .card-actions {
-    gap: 0.5rem;
-  }
-
-  .quantity-selector-compact {
-    width: 100%;
-    height: 26px;
-  }
-
-  .qty-btn {
-    width: 26px;
-    height: 26px;
+  
+  /* Product Caption */
+  .product-card__caption {
+    font-family: 'Nunito', sans-serif;
     font-size: 0.8rem;
+    color: #777;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    font-weight: 400;
+    flex-grow: 0;
   }
-
-  .qty-display {
-    width: 30px;
-    height: 26px;
-    font-size: 0.8rem;
-    line-height: 26px;
+  
+  /* ========================
+     RATING
+     ======================== */
+  .product-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
   }
-
-  .button-group {
-    width: 100%;
-    gap: 0.3rem;
-  }
-
-  .btn-add-to-cart,
-  .btn-purchase {
-    padding: 0.4rem 0.5rem;
-    font-size: 0.65rem;
-  }
-
-  .btn-wishlist {
-    width: 28px;
-    height: 28px;
+  
+  .product-card__stars {
     font-size: 0.9rem;
+    color: #D4A848;
+    letter-spacing: 1px;
   }
-}
+  
+  .product-card__rating-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #302418;
+  }
+  
+  .product-card__review-count {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    color: #B0A89A;
+  }
+  
+  /* ========================
+     PRICE & AVAILABILITY
+     ======================== */
+  .product-card__price {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #D4A848;
+    margin: 0 0 4px 0;
+  }
+  
+  .product-card__availability {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    color: #B0A89A;
+    margin: 0;
+  }
+  
+  /* ========================
+     RESPONSIVE
+     ======================== */
+  @media (max-width: 768px) {
+    .product-card {
+      border-radius: 6px;
+    }
+  
+    .product-card__image-container {
+      height: 240px;
+    }
+  
+    .product-card__image {
+      padding: 14px;
+    }
+  
+    .product-card__info {
+      padding: 12px 10px;
+    }
+  
+    .product-card__name {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+  
+    .product-card__caption {
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+  
+    .product-card__price {
+      font-size: 1rem;
+    }
+  
+    .product-card__action-btn {
+      padding: 8px 10px;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-card__image-container {
+      height: 200px;
+    }
+  
+    .product-card__image {
+      padding: 12px;
+    }
+  
+    .product-card__name {
+      font-size: 1rem;
+    }
+  
+    .product-card__caption {
+      font-size: 0.7rem;
+    }
+  
+    .product-card__rating-number {
+      font-size: 0.75rem;
+    }
+  
+    .product-card__price {
+      font-size: 0.95rem;
+    }
+  
+    .product-card__action-btn {
+      padding: 7px 8px;
+      font-size: 0.65rem;
+    }
+  }
+  

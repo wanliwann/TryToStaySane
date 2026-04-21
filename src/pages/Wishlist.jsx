@@ -1,91 +1,126 @@
-import { Link } from 'react-router-dom'
-import Button from '../components/Button'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useWishlist } from '../context/WishlistContext';
+import { useCart } from '../context/CartContext';
+import Breadcrumb from '../components/Breadcrumb';
+import './Wishlist.css';
 
-function Wishlist({ wishlistItems = [] }) {
-  return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '72px 24px', textAlign: 'center' }}>
-      {wishlistItems.length === 0 ? (
-        <>
-          {/* Empty wishlist - heart icon */}
-          <div style={{ margin: '0 auto 24px' }}>
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#E8D8B8" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-            </svg>
+export default function Wishlist() {
+  const { wishlistItems, removeFromWishlist, clearWishlist } = useWishlist();
+  const { addToCart } = useCart();
+  const [addedItems, setAddedItems] = useState(new Set());
+
+  const handleAddToCart = (item) => {
+    if (item.sizes && item.sizes.length > 0) {
+      // Silently add to cart - no alert
+      addToCart(item, item.sizes[0].oz, 1);
+      
+      // Show brief visual feedback
+      setAddedItems(prev => new Set(prev).add(item.id));
+      setTimeout(() => {
+        setAddedItems(prev => {
+          const updated = new Set(prev);
+          updated.delete(item.id);
+          return updated;
+        });
+      }, 2000);
+    }
+  };
+
+  const handleRemove = (productId) => {
+    removeFromWishlist(productId);
+  };
+
+  if (wishlistItems.length === 0) {
+    return (
+      <div className="wishlist-page">
+        <Breadcrumb />
+        <div className="wishlist-container">
+          <h1>My Wishlist</h1>
+          <div className="wishlist-empty">
+            <div className="empty-icon">♡</div>
+            <h2>Your Wishlist is Empty</h2>
+            <p>Start adding your favorite perfumes to your wishlist!</p>
+            <Link to="/browse" className="btn btn-primary">
+              Continue Shopping
+            </Link>
           </div>
+        </div>
+      </div>
+    );
+  }
 
-          <h1 style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '42px',
-            fontWeight: 300,
-            margin: '0 0 16px',
-          }}>
-            Your wishlist is currently <em style={{ color: 'var(--terra)' }}>empty</em>
-          </h1>
+  return (
+    <div className="wishlist-page">
+      <Breadcrumb />
+      
+      <div className="wishlist-container">
+        <div className="wishlist-header">
+          <div>
+            <h1>My Wishlist</h1>
+            <p className="wishlist-count">{wishlistItems.length} item(s) saved</p>
+          </div>
+          {wishlistItems.length > 0 && (
+            <button className="btn-clear-wishlist" onClick={clearWishlist}>
+              Clear All
+            </button>
+          )}
+        </div>
 
-          <p style={{
-            fontSize: '14px',
-            color: 'var(--faint)',
-            marginBottom: '32px',
-            lineHeight: 1.7,
-            maxWidth: '400px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-            You don't have any products in the list yet. You will find a lot of interesting products on our shop page.
-          </p>
+        <div className="wishlist-grid">
+          {wishlistItems.map(item => (
+            <div key={item.id} className="wishlist-card">
+              <div className="wishlist-card__image-section">
+                <Link to={`/product/${item.id}`} className="wishlist-card__image-link">
+                  <img
+                    src={item.mainImage || item.image}
+                    alt={item.name}
+                    className="wishlist-card__image"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/250x350?text=Perfume';
+                    }}
+                  />
+                </Link>
+                <button
+                  className="wishlist-card__remove"
+                  onClick={() => handleRemove(item.id)}
+                  title="Remove from wishlist"
+                  aria-label="Remove from wishlist"
+                >
+                  ✕
+                </button>
+              </div>
 
-          <Link to="/browse">
-            <Button variant="primary">Return to Shop</Button>
-          </Link>
-        </>
-      ) : (
-        <>
-          <p className="eyebrow" style={{ textAlign: 'center' }}>Your Favorites</p>
-          <h1 style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '42px',
-            fontWeight: 300,
-            margin: '16px 0 32px',
-          }}>
-            Wishlist <em style={{ color: 'var(--terra)' }}>({wishlistItems.length})</em>
-          </h1>
+              <div className="wishlist-card__info">
+                <p className="wishlist-card__brand">{item.brand}</p>
+                <Link to={`/product/${item.id}`} className="wishlist-card__name-link">
+                  <h3 className="wishlist-card__name">{item.name}</h3>
+                </Link>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-            gap: '20px',
-            textAlign: 'left',
-          }}>
-            {wishlistItems.map((item) => (
-              <div key={item.id} style={{
-                background: 'var(--bg)',
-                borderRadius: '10px',
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-              }}>
-                <div style={{
-                  height: '180px',
-                  background: 'var(--surface)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '12px',
-                  color: 'var(--border)',
-                  fontStyle: 'italic',
-                }}>
-                  {item.image ? <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : 'product photo'}
+                <div className="wishlist-card__price">
+                  {item.price && <p className="price-value">${item.price}</p>}
+                  {item.sizes && item.sizes.length > 0 && (
+                    <p className="sizes-available">{item.sizes.length} sizes</p>
+                  )}
                 </div>
-                <div style={{ padding: '16px' }}>
-                  <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '16px', marginBottom: '4px' }}>{item.name}</h4>
-                  <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--terra)' }}>${item.price}</div>
+
+                <div className="wishlist-card__actions">
+                  <button
+                    className={`btn-add-to-cart ${addedItems.has(item.id) ? 'added' : ''}`}
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    {addedItems.has(item.id) ? '✓ Added' : 'Add to Cart'}
+                  </button>
+                  <Link to={`/product/${item.id}`} className="btn-view-details">
+                    View Details
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </>
-      )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
-
-export default Wishlist

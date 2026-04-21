@@ -17,7 +17,7 @@ function Shop() {
         <p className="eyebrow" style={{ textAlign: 'center' }}>{eyebrowText}</p>
         <h1 className="shop-page__title">{pageTitle}</h1>
         <p className="shop-page__desc">
-          {displayProducts.length} premium scents from the world's finest brands.
+          {displayProducts.length} perfumes with the use sensory words like 'crisp', 'fresh' or 'warm', 'velvety' or 'soft' versus 'sharp' to describe your sensory experience when smelling a particular note.
         </p>
       </div>
 

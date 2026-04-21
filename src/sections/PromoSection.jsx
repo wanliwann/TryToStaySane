@@ -7,24 +7,39 @@ function PromoSection() {
     <section className="promo-section">
       <div className="promo-section__container">
         <div className="promo-section__image">
-          <span>lifestyle image</span>
+          <img src="/story.jpg" alt="Premium Perfume" loading="lazy" />
         </div>
-        <div className="promo-section__text">
-          <p className="eyebrow">Why Choose Us</p>
-          <h3>
+        
+        <div className="promo-section__content">
+          <p className="promo-section__eyebrow">Why Choose Us</p>
+          <h3 className="promo-section__title">
             Your Scent, <em>Your Glow</em>
           </h3>
+          
           <div className="promo-section__features">
-            <p>✦ Handcrafted with ethically sourced ingredients</p>
-            <p>✦ Long-lasting formula — stays with you 8+ hours</p>
-            <p>✦ 100% cruelty-free and vegan friendly</p>
-            <p>✦ Free shipping on all orders over $50</p>
+            <div className="feature-item">
+              <span className="feature-icon"></span>
+              <p>✦ Handcrafted with ethically sourced ingredients</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon"></span>
+              <p>✦ Long-lasting formula — stays with you 8+ hours</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon"></span>
+              <p>✦ 100% cruelty-free and vegan friendly</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon"></span>
+              <p>✦ Free shipping on all orders over $50</p>
+            </div>
           </div>
-          <div className="promo-section__buttons">
-            <Link to="/browse">
+          
+          <div className="promo-section__actions">
+            <Link to="/browse" className="btn-wrapper">
               <Button variant="primary">Start Shopping</Button>
             </Link>
-            <Link to="/browse">
+            <Link to="/gift-cards" className="btn-wrapper">
               <Button variant="gold">Gift Cards</Button>
             </Link>
           </div>

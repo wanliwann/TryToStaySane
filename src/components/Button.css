@@ -1,51 +1,132 @@
-.btn {
-  display: inline-block;
-  padding: 13px 32px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-radius: 3px;
-  font-weight: 700;
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.btn-primary {
-  background: var(--terra);
-  color: var(--bg);
-}
-
-.btn-primary:hover {
-  background: #9A6038;
-}
-
-.btn-outline {
-  border: 1.5px solid var(--terra);
-  color: var(--terra);
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background: var(--terra);
-  color: var(--bg);
-}
-
-.btn-gold {
-  border: 1.5px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-}
-
-.btn-gold:hover {
-  background: var(--gold);
-  color: var(--bg);
-}
-
-@media (max-width: 768px) {
-  .btn {
-    padding: 12px 24px;
-    font-size: 9px;
+/* ========================
+   BUTTON BASE STYLES
+   ======================== */
+   .btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-}
+  
+  .btn:active {
+    transform: translateY(1px);
+  }
+  
+  /* ========================
+     PRIMARY BUTTON
+     ======================== */
+     .btn-primary {
+      background: #B87848 !important;
+      color: #FFFDF5 !important;
+      font-weight: 600;
+      padding: 14px 36px !important;
+      font-size: 12px !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .btn-primary:hover {
+      background: #A06638 !important;
+      box-shadow: 0 4px 12px rgba(184, 120, 72, 0.25) !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+  /* ========================
+     OUTLINE BUTTON
+     ======================== */
+  .btn-outline {
+    border: 2px solid #B87848;
+    color: #B87848;
+    background: transparent;
+    font-weight: 600;
+    box-shadow: none;
+  }
+  
+  .btn-outline:hover {
+    background: #B87848;
+    color: #FFFDF5;
+    box-shadow: 0 4px 12px rgba(184, 120, 72, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* ========================
+     GOLD BUTTON
+     ======================== */
+  .btn-gold {
+    border: 2px solid #D4A848;
+    color: #D4A848;
+    background: transparent;
+    font-weight: 600;
+    box-shadow: none;
+  }
+  
+  .btn-gold:hover {
+    background: #D4A848;
+    color: #302418;
+    box-shadow: 0 4px 12px rgba(212, 168, 72, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* ========================
+     DARK BUTTON
+     ======================== */
+  .btn-dark {
+    background: #302418;
+    color: #FFFDF5;
+    font-weight: 600;
+  }
+  
+  .btn-dark:hover {
+    background: #1a1410;
+    box-shadow: 0 4px 12px rgba(48, 36, 24, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* ========================
+     SECONDARY BUTTON
+     ======================== */
+  .btn-secondary {
+    background: transparent;
+    color: #B87848;
+    border: 1.5px solid #E8DCC8;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  
+  .btn-secondary:hover {
+    background: #FFFBF7;
+    border-color: #B87848;
+    color: #B87848;
+    box-shadow: 0 2px 8px rgba(184, 120, 72, 0.1);
+  }
+  
+  /* ========================
+     RESPONSIVE
+     ======================== */
+  @media (max-width: 768px) {
+    .btn {
+      padding: 12px 28px;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .btn {
+      padding: 11px 22px;
+      font-size: 10px;
+      letter-spacing: 0.8px;
+    }
+  }

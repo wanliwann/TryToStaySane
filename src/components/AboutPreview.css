@@ -1,0 +1,123 @@
+.about-preview {
+  background: var(--bg);
+  padding: 80px 0;
+}
+
+.about-preview__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-preview__image {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.about-preview__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.about-preview__content {
+  padding: 40px 0;
+}
+
+.about-preview__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #302418;
+  margin: 0 0 32px 0;
+}
+
+.about-preview__heading .gold {
+  color: #D4A848;
+  font-style: italic;
+}
+
+.about-preview__description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin: 0 0 40px 0;
+  max-width: 100%;
+}
+
+.about-preview__button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #D4A848;
+  color: white;
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-preview__button:hover {
+  background: #B87848;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .about-preview {
+    padding: 60px 0;
+  }
+
+  .about-preview__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+  }
+
+  .about-preview__heading {
+    font-size: 36px;
+  }
+
+  .about-preview__description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .about-preview__button {
+    padding: 12px 28px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-preview {
+    padding: 40px 0;
+  }
+
+  .about-preview__container {
+    gap: 24px;
+    padding: 0 16px;
+  }
+
+  .about-preview__heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .about-preview__description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}

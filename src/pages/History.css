@@ -1,0 +1,470 @@
+/* ===== HISTORY PAGE ===== */
+.history-page {
+  min-height: 100vh;
+  background: #FFFDF5;
+  padding: 60px 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.history__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.history__container h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #302418;
+  margin: 0 0 40px 0;
+  text-align: center;
+}
+
+/* ===== TAB NAVIGATION ===== */
+.history__tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #E8DCC8;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.history__tab-btn {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+  bottom: -2px;
+  text-transform: uppercase;
+}
+
+.history__tab-btn:hover {
+  color: #B87848;
+}
+
+.history__tab-btn.active {
+  color: #B87848;
+  border-bottom-color: #B87848;
+}
+
+/* ===== TAB CONTENT ===== */
+.history__content {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #E8DCC8;
+  padding: 40px;
+  min-height: 400px;
+}
+
+.history__tab-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #302418;
+  margin: 0 0 30px 0;
+  border-bottom: 2px solid #E8DCC8;
+  padding-bottom: 16px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  font-size: 15px;
+  padding: 60px 20px;
+}
+
+/* ===== ORDER CARDS ===== */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  border: 1px solid #E8DCC8;
+  border-radius: 6px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  background: #FFFBF7;
+}
+
+.order-card:hover {
+  border-color: #D4A848;
+  box-shadow: 0 4px 12px rgba(212, 168, 72, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E8DCC8;
+}
+
+.order-id {
+  font-size: 14px;
+  font-weight: 700;
+  color: #302418;
+  letter-spacing: 0.5px;
+}
+
+.order-status {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: #E8F4E8;
+  color: #2d7a2d;
+  letter-spacing: 0.5px;
+}
+
+.order-status.completed {
+  background: #E8F4E8;
+  color: #2d7a2d;
+}
+
+.order-status.pending {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.order-status.in-transit {
+  background: #E3F2FD;
+  color: #0D47A1;
+}
+
+.order-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.order-details p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.order-details strong {
+  color: #302418;
+  font-weight: 600;
+}
+
+.order-total {
+  grid-column: 1 / -1;
+  font-size: 15px !important;
+  color: #B87848 !important;
+  font-weight: 700 !important;
+  padding-top: 12px;
+  border-top: 1px solid #E8DCC8;
+}
+
+/* ===== MESSAGE CARDS ===== */
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message-card {
+  border: 1px solid #E8DCC8;
+  border-radius: 6px;
+  padding: 24px;
+  background: #FFFBF7;
+  transition: all 0.3s ease;
+}
+
+.message-card:hover {
+  border-color: #D4A848;
+  box-shadow: 0 4px 12px rgba(212, 168, 72, 0.1);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E8DCC8;
+}
+
+.message-subject {
+  font-size: 14px;
+  font-weight: 700;
+  color: #302418;
+  letter-spacing: 0.5px;
+}
+
+.message-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.message-card p {
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.message-card strong {
+  color: #302418;
+  font-weight: 600;
+}
+
+.message-content {
+  background: white;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+  border-left: 3px solid #D4A848;
+  font-style: italic;
+  color: #555;
+}
+
+.message-reply {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #E8DCC8;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.message-reply textarea {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px;
+  border: 1px solid #E8DCC8;
+  border-radius: 4px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.reply-btn {
+  padding: 10px 24px;
+  background: #B87848;
+  color: #FFFDF5;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.reply-btn:hover {
+  background: #A06638;
+  transform: translateY(-2px);
+}
+
+/* ===== MEMBERSHIP CARD ===== */
+.membership-card {
+  border: 1px solid #D4A848;
+  border-radius: 6px;
+  padding: 32px;
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF9F0 100%);
+  text-align: center;
+}
+
+.membership-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #B87848;
+  margin: 0 0 20px 0;
+}
+
+.membership-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.membership-card ul {
+  list-style: none;
+  padding: 20px 0;
+  margin: 20px 0;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.membership-card li {
+  font-size: 13px;
+  color: #666;
+  padding: 8px 0 8px 24px;
+  position: relative;
+}
+
+.membership-card li:before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #D4A848;
+}
+
+.membership-note {
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ===== FEEDBACK CARDS ===== */
+.feedbacks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedback-card {
+  border: 1px solid #E8DCC8;
+  border-radius: 6px;
+  padding: 24px;
+  background: #FFFBF7;
+  transition: all 0.3s ease;
+}
+
+.feedback-card:hover {
+  border-color: #D4A848;
+  box-shadow: 0 4px 12px rgba(212, 168, 72, 0.1);
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E8DCC8;
+}
+
+.feedback-product {
+  font-size: 14px;
+  font-weight: 700;
+  color: #302418;
+  letter-spacing: 0.5px;
+}
+
+.feedback-rating {
+  font-size: 14px;
+  color: #D4A848;
+  letter-spacing: 1px;
+}
+
+.feedback-content {
+  background: white;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+  border-left: 3px solid #D4A848;
+  font-style: italic;
+  color: #555;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.feedback-date {
+  font-size: 12px;
+  color: #999;
+  margin-top: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .history-page {
+    padding: 40px 16px;
+  }
+
+  .history__container h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .history__content {
+    padding: 30px 20px;
+  }
+
+  .history__tab-content h3 {
+    font-size: 24px;
+  }
+
+  .order-details {
+    grid-template-columns: 1fr;
+  }
+
+  .history__tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-page {
+    padding: 30px 12px;
+  }
+
+  .history__container h1 {
+    font-size: 26px;
+  }
+
+  .history__content {
+    padding: 20px 16px;
+  }
+
+  .order-card,
+  .message-card,
+  .feedback-card {
+    padding: 16px;
+  }
+
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .message-reply {
+    flex-direction: column;
+  }
+
+  .message-reply textarea {
+    min-width: 100%;
+  }
+
+  .reply-btn {
+    width: 100%;
+  }
+}
+
+/* ===== VIP MEMBERS GRID ===== */
+.vip-members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .vip-members-grid {
+    grid-template-columns: 1fr;
+  }
+}

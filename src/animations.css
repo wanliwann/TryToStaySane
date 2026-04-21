@@ -1,148 +1,22 @@
-/* ============================================
-   SCROLL REVEAL ANIMATIONS
-   Add class "reveal" + "visible" to trigger
-   ============================================ */
+/* ===============================
+   PAGE ANIMATIONS & TRANSITIONS
+   =============================== */
 
-/* Fade up (default) */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Fade up with delay variants */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
-/* Fade from left */
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Fade from right */
-.reveal-right {
-  opacity: 0;
-  transform: translateX(60px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Scale up */
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-scale.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ============================================
-   HOVER EFFECTS
-   ============================================ */
-
-/* Image zoom on hover */
-.hover-zoom {
-  overflow: hidden;
-}
-
-.hover-zoom img,
-.hover-zoom .product-card__image,
-.hover-zoom .img-placeholder {
-  transition: transform 0.5s ease;
-}
-
-.hover-zoom:hover img,
-.hover-zoom:hover .product-card__image,
-.hover-zoom:hover .img-placeholder {
-  transform: scale(1.08);
-}
-
-/* Button shine effect */
-.btn-shine {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-shine::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.25),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.btn-shine:hover::after {
-  left: 100%;
-}
-
-/* Gold shimmer underline on hover */
-.hover-underline {
-  position: relative;
-}
-
-.hover-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-
-.hover-underline:hover::after {
-  width: 100%;
-}
-
-/* Card lift on hover */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(48, 36, 24, 0.08);
-}
-
-/* ============================================
-   PAGE LOAD ANIMATIONS
-   ============================================ */
-
-@keyframes fadeInUp {
+/* Page Fade In */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Page Slide Up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -150,7 +24,8 @@
   }
 }
 
-@keyframes fadeInLeft {
+/* Page Slide In From Left */
+@keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-30px);
@@ -161,7 +36,8 @@
   }
 }
 
-@keyframes fadeInRight {
+/* Page Slide In From Right */
+@keyframes slideInRight {
   from {
     opacity: 0;
     transform: translateX(30px);
@@ -172,21 +48,97 @@
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+/* Button Hover Animation */
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
     transform: scale(1);
   }
 }
 
-@keyframes slideDown {
+/* Apply to page containers */
+.home-page,
+.shop-page,
+.product-detail-page,
+.checkout-page,
+.order-confirmation-page,
+.delivery-page,
+.history-page,
+.contact-page,
+.about-page,
+.account-page,
+.wishlist-page,
+.cart-page,
+.payment-page {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Hero Section Animation */
+.hero {
+  animation: slideUp 0.6s ease;
+}
+
+/* Product Cards */
+.product-card {
+  animation: slideUp 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* Button Hover */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.btn-checkout:hover,
+.btn-join:hover,
+.btn-continue:hover,
+.btn-download:hover {
+  animation: buttonPulse 0.3s ease;
+}
+
+/* Section Animations */
+.receipt-section,
+.order-card,
+.feedback-card,
+.membership-card {
+  animation: slideUp 0.4s ease;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Disable transition on hover states */
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.3s ease;
+}
+
+/* Scroll Animation */
+@keyframes scrollReveal {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -194,96 +146,112 @@
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Loading Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-/* Hero specific load animation */
-.hero-animate .eyebrow {
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
+.loading {
+  animation: spin 1s linear infinite;
 }
 
-.hero-animate .hero__title {
-  animation: fadeInUp 0.7s ease forwards;
-  animation-delay: 0.4s;
-  opacity: 0;
+/* Fade Out Animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-.hero-animate .hero__desc {
-  animation: fadeInUp 0.7s ease forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
+/* Modal Animations */
+.membership-overlay {
+  animation: fadeIn 0.3s ease;
 }
 
-.hero-animate .hero__buttons {
-  animation: fadeInUp 0.7s ease forwards;
-  animation-delay: 0.8s;
-  opacity: 0;
+.membership-card,
+.receipt-box {
+  animation: slideUp 0.4s ease;
 }
 
-.hero-animate .hero__image {
-  animation: fadeInRight 0.9s ease forwards;
-  animation-delay: 0.5s;
-  opacity: 0;
+/* Pulse Animation for important elements */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.hero-animate .hero__dots {
-  animation: fadeInUp 0.5s ease forwards;
-  animation-delay: 1s;
-  opacity: 0;
+.important-message {
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* Navbar load animation */
-.navbar {
-  animation: slideDown 0.5s ease forwards;
+/* Stagger Animation for lists */
+.list-item {
+  animation: slideUp 0.3s ease forwards;
 }
 
-/* ============================================
-   SPARKLE / BLINK BLINK EFFECTS
-   ============================================ */
+.list-item:nth-child(1) { animation-delay: 0s; }
+.list-item:nth-child(2) { animation-delay: 0.1s; }
+.list-item:nth-child(3) { animation-delay: 0.2s; }
+.list-item:nth-child(4) { animation-delay: 0.3s; }
+.list-item:nth-child(5) { animation-delay: 0.4s; }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
+/* Success Animation */
+@keyframes successBounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.sparkle-container {
-  position: relative;
+.success-check,
+.success-icon {
+  animation: successBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.sparkle-dot {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  animation: sparkle 2s ease-in-out infinite;
+/* Form Input Focus Animation */
+input:focus,
+textarea:focus,
+select:focus {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(212, 168, 72, 0.2);
 }
 
-/* Smooth section transitions */
-.section-transition {
-  transition: background-color 0.5s ease;
+/* Mobile Performance - Reduce animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Parallax-style subtle movement */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+/* Mobile */
+@media (max-width: 768px) {
+  .product-card {
+    animation-delay: 0 !important;
+  }
 
-.float-animation {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Gold gradient text for special headings */
-.gold-gradient-text {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--terra) 50%, var(--gold) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
+  .list-item {
+    animation-delay: 0 !important;
+  }
 }
